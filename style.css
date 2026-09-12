@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: #0b0205; /* Fondo negro-vinotinto muy profundo y elegante */
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+}
+
+/* Lienzo de fondo que ocupa toda la pantalla */
+#romanticCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+/* Interfaz superior */
+.ui-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 20px;
+    pointer-events: none; /* Permite hacer clic a través del contenedor hacia el canvas */
+}
+
+.hero-section {
+    text-align: center;
+    animation: fadeInDown 2s ease-in-out;
+}
+
+.glow-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 600;
+    color: #ffb3c6;
+    text-shadow: 0 0 15px rgba(255, 105, 135, 0.6), 0 0 30px rgba(255, 75, 110, 0.4);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+/* Botón interactivo */
+.letter-trigger-container {
+    pointer-events: auto; /* Reactiva los clics solo para el botón */
+    margin-bottom: 20px;
+}
+
+.love-button {
+    background: linear-gradient(135deg, #ff4b6e, #ff758c);
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(255, 75, 110, 0.4);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.love-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 25px rgba(255, 75, 110, 0.7);
+}
+
+/* Modal Estilizado de la Carta */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 1, 3, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #1a080d, #110407);
+    border: 1px solid rgba(255, 105, 135, 0.3);
+    padding: 40px 30px;
+    border-radius: 20px;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(255, 75, 110, 0.2);
+    transform: translateY(30px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-content h2 {
+    font-family: 'Cinzel', serif;
+    color: #ffb3c6;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+
+.modal-content p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.signature {
+    font-style: italic;
+    color: #ff758c;
+    font-weight: 500;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #ff4b6e;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
